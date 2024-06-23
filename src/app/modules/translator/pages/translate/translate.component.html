@@ -1,0 +1,84 @@
+<p-toast></p-toast>
+
+@if (isLoading) {
+  <div class="absolute z-30 bg-white w-full h-screen opacity-35">
+    <div class="absolute top-[50%] left-[50%]">
+      <div class="loader"></div>
+    </div>
+  </div>
+}
+
+<div class=" w-full img-fondo bg-cover bg-no-repeat h-[30rem]">
+  <div class="h-screen flex flex-col justify-center gap-y-10">
+    <div class="flex justify-center">
+      <img src="/assets/img/logo.svg">
+    </div>
+    <div class="grid xl:grid-cols-2 lg:grid-cols-1 sm:grid-cols-1 gap-4 xl:px-40 sm:px-10 z-10">
+      <div class="bg-[#121826cc] rounded-3xl p-4 border-2 border-[#4D5562]">
+        <div class="opacity-100">
+          <div class="flex items-center gap-9">
+            <p class="link-normal dm-sans">Seleccionar Lenguaje</p>
+
+            <div class="flex gap-5 items-center">
+              @for (idioma of idiomas; track $index) {
+                <a href="#" class="link-normal dm-sans" [class.link-active]="selectedKeyPrincipal === idioma.key" (click)="selectIdiomaPrinciapal(idioma.key)">{{ idioma.lengua }}</a>
+              }
+            </div>
+          </div>
+
+          <div class="w-[100%] bg-[#394150] p-[0.02rem] mt-4"></div>
+
+          <div class="pt-4">
+            <textarea class="w-[100%] text-config" rows="9" [(ngModel)]="textoOriginal" (input)="countsLettersAll()"></textarea>
+          </div>
+
+          <div class="flex items-end justify-between">
+            <div class="flex gap-3">
+              <button class="border-2 border-[#4D5562] rounded-xl p-2" (click)="playTranslateTextOriginal()">
+                <img src="/assets/img/volumen.svg">
+              </button>
+              <button class="border-2 border-[#4D5562] rounded-xl p-2" pTooltip="Copiar al portapeles" tooltipPosition="top" (click)="copyToClipboardTextOriginal()">
+                <img src="/assets/img/copy.svg">
+              </button>
+            </div>
+            <div class="flex flex-col items-end gap-1">
+              <p class="font-bold text-[#4D5562]">{{countsLetter}}/500</p>
+              <button class="bg-[#3662E3] px-10 py-3 rounded-xl text-white font-bold border-2 border-[#7CA9F3]" (click)="translateText()">Translate</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#121826cc] rounded-3xl p-4 border-2 border-[#4D5562]">
+        <div class="opacity-100">
+          <div class="flex items-center gap-9">
+            <p class="link-normal dm-sans">Seleccionar Lenguaje</p>
+
+            <div class="flex gap-5 items-center">
+              @for (idioma of idiomas; track $index) {
+                <a href="#" class="link-normal dm-sans" [class.link-active]="selectedKeySecundario === idioma.key" (click)="selectIdiomaSecundario(idioma.key)">{{ idioma.lengua }}</a>
+              }
+            </div>
+          </div>
+
+          <div class="w-[100%] bg-[#394150] p-[0.02rem] mt-4"></div>
+
+          <div class="pt-4">
+            <textarea class="w-[100%] text-config" rows="9" [(ngModel)]="textoTraducido"></textarea>
+          </div>
+
+          <div class="flex items-end justify-between mt-10">
+            <div class="flex gap-3">
+              <button class="border-2 border-[#4D5562] rounded-xl p-2" (click)="playTranslateTextTraducido()">
+                <img src="/assets/img/volumen.svg">
+              </button>
+              <button class="border-2 border-[#4D5562] rounded-xl p-2" pTooltip="Copiar al portapeles" tooltipPosition="top" (click)="copyToClipboardTextTraducido()">
+                <img src="/assets/img/copy.svg">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

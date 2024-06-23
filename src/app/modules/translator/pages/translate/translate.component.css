@@ -1,0 +1,83 @@
+.dm-sans{
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 16px;
+  font-style: normal;
+}
+
+.img-fondo{
+  position: relative;
+  background-image: url('/assets/img/fondo-img.jpg');
+
+}
+
+.img-fondo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%; /* Ajusta la altura de la superposición según tus necesidades */
+  background: linear-gradient(to top, rgba(4, 7, 17, 1), transparent);
+  pointer-events: none; /* Asegura que la superposición no interfiera con la interacción del usuario */
+}
+
+.link-normal{
+  color: #394150;
+  font-weight: 800;
+}
+
+.link-active{
+  font-family: "DM Sans", sans-serif;
+  background-color: #4D5562;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 700;
+  transition: ease;
+}
+
+.text-config{
+  background-color: transparent;
+  color: white;
+  padding: 1rem;
+  font-weight: 700;
+  border: none;
+}
+
+.icons{
+  border-style: solid;
+  background-color: red;
+}
+
+.content-translate{
+  border-style: solid white;
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-right-color: #b02525;
+  animation: l15 1s infinite linear;
+}
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: l15 2s infinite;
+}
+.loader::after {
+  margin: 8px;
+  animation-duration: 3s;
+}
+@keyframes l15{
+  100%{transform: rotate(1turn)}
+}
